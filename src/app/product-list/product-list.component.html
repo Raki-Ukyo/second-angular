@@ -1,8 +1,25 @@
-<h2>Products</h2>
+<h2>商品一覧</h2>
+<div *ngFor="let product of products">
+  <a [title]="product.name + 'の詳細はこちら'">
+    <h3>{{ product.name }}</h3>
+  </a>
+  <h3>{{ product.price }}</h3>
 
+  <p *ngIf="product.description">
+    {{ product.description }}
+  </p>
+  <button (click)="share()">SHAREする</button>
+  <app-product-alerts
+    [name]="product.name"
+    (onNotify)="notify()"
+  ></app-product-alerts>
+</div>
+<!-- <h2>{{ student.name }}</h2>
+  <h2>{{ student.age }}</h2>
+  <h2>{{ student.gender }}</h2> -->
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
+can be found in the LICENSE file at https://angular.io/license
 -->
